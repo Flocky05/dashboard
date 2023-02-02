@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const App = () => {
+  const [users, setUser] = useState([]);
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setUser(data);
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+  }, []);
   return (
     <div className="App">
       <center>
-        <table class="table w-[50rem] bg-gray-50 m-8 shadow-lg ">
+        <table class="table w-[70rem] m-8 ">
           <thead>
             <tr>
               <th></th>
@@ -14,39 +28,44 @@ const App = () => {
               <th></th>
             </tr>
           </thead>
-          <tbody className="text-center">
-            <tr className="rounded [&>td]:p-8">
-              <td>my name</td>
-              <td>
-                <div>
-                  <h2 className="font-semibold">Contact</h2>
-                </div>
-                <div>
-                  <p>Rakibul</p>
-                </div>
-              </td>
-              <td>
-                <div>
-                  <h2 className="font-semibold">City</h2>
-                </div>
-                <div>
-                  <p>Dhaka</p>
-                </div>
-              </td>
-              <td>
-                <div>
-                  <h2 className="font-semibold">State</h2>
-                </div>
-                <div>
-                  <p>Bangladesh</p>
-                </div>
-              </td>
-              <td>
-                <button className="bg-red-500 px-3 py-1 rounded-full text-white">
-                  view Detail
-                </button>
-              </td>
-            </tr>
+          <tbody className="text-center space-y-4 flex flex-col gap-y-5">
+            {users?.map((user) => (
+              <tr
+                key={user.id}
+                className="rounded-xl shadow flex w-full  bg-gray-50 [&>td]:p-8 border"
+              >
+                <td>{user.username}</td>
+                <td>
+                  <div>
+                    <h2 className="font-semibold">Contact</h2>
+                  </div>
+                  <div>
+                    <p>{user.name}</p>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <h2 className="font-semibold">City</h2>
+                  </div>
+                  <div>
+                    <p>{user.address.city}</p>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <h2 className="font-semibold">phone</h2>
+                  </div>
+                  <div>
+                    <p>{user.phone}</p>
+                  </div>
+                </td>
+                <td>
+                  <button className="bg-red-500 px-3 py-1 rounded-full text-white">
+                    view Detail
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </center>

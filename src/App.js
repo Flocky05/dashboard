@@ -4,7 +4,7 @@ const App = () => {
   return (
     <div className="App">
       <center>
-        <table class="table w-[32rem] border-2 bg-gray-50 rounded-lg m-8 p-11">
+        <table class="table w-[50rem] bg-gray-50 m-8 shadow-lg ">
           <thead>
             <tr>
               <th></th>
@@ -15,7 +15,7 @@ const App = () => {
             </tr>
           </thead>
           <tbody className="text-center">
-            <tr>
+            <tr className="rounded [&>td]:p-8">
               <td>my name</td>
               <td>
                 <div>
@@ -42,7 +42,7 @@ const App = () => {
                 </div>
               </td>
               <td>
-                <button className="bg-orange-600 px-2 py-1 rounded-md text-white">
+                <button className="bg-red-500 px-3 py-1 rounded-full text-white">
                   view Detail
                 </button>
               </td>

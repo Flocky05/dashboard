@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const App = () => {
   const [users, setUser] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => {
@@ -61,9 +62,23 @@ const App = () => {
                     </div>
                   </td>
                   <td>
-                    <button className="bg-red-500 px-3 py-1 rounded-full text-white">
+                    <button
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="bg-red-500 px-3 py-1 rounded-full text-white"
+                    >
                       view Detail
                     </button>
+                    {isOpen && (
+                      <div className="p-4 pt-0 bg-gray-200 border-2">
+                        <p className="text-gray-700 text-center">
+                          Lorem ipsum dolor sit amet, consectetur adipisicing
+                          elit. Laudantium tenetur exercitationem, quisquam
+                          eligendi libero vero adipisci voluptatem quod labore
+                          sint ex accusantium harum. Possimus qui architecto
+                          recusandae, error porro alias?
+                        </p>
+                      </div>
+                    )}
                   </td>
                 </tr>
                 <br />

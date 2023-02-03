@@ -28,43 +28,46 @@ const App = () => {
               <th></th>
             </tr>
           </thead>
-          <tbody className="text-center space-y-4 flex flex-col gap-y-5">
+          <tbody className="text-center space-y-4">
             {users?.map((user) => (
-              <tr
-                key={user.id}
-                className="rounded-xl shadow flex w-full  bg-gray-50 [&>td]:p-8 border"
-              >
-                <td>{user.username}</td>
-                <td>
-                  <div>
-                    <h2 className="font-semibold">Contact</h2>
-                  </div>
-                  <div>
-                    <p>{user.name}</p>
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <h2 className="font-semibold">City</h2>
-                  </div>
-                  <div>
-                    <p>{user.address.city}</p>
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <h2 className="font-semibold">phone</h2>
-                  </div>
-                  <div>
-                    <p>{user.phone}</p>
-                  </div>
-                </td>
-                <td>
-                  <button className="bg-red-500 px-3 py-1 rounded-full text-white">
-                    view Detail
-                  </button>
-                </td>
-              </tr>
+              <>
+                <tr
+                  key={user.id}
+                  className="rounded-xl shadow w-full  bg-gray-50 [&>td]:p-8 border"
+                >
+                  <td>{user.username}</td>
+                  <td>
+                    <div>
+                      <h2 className="font-semibold">Contact</h2>
+                    </div>
+                    <div>
+                      <p>{user.name}</p>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <h2 className="font-semibold">City</h2>
+                    </div>
+                    <div>
+                      <p>{user.address.city}</p>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <h2 className="font-semibold">phone</h2>
+                    </div>
+                    <div>
+                      <p>{user.phone}</p>
+                    </div>
+                  </td>
+                  <td>
+                    <button className="bg-red-500 px-3 py-1 rounded-full text-white">
+                      view Detail
+                    </button>
+                  </td>
+                </tr>
+                <br />
+              </>
             ))}
           </tbody>
         </table>
